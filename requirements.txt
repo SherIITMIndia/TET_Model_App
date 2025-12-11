@@ -1,5 +1,5 @@
 pip==23.3.1
-sstreamlit
+streamlit
 pandas
 numpy
 openpyxl
