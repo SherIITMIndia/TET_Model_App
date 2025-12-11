@@ -1,6 +1,7 @@
-streamlit
+sstreamlit
 pandas
 numpy
 openpyxl
 matplotlib
 scikit-learn
+

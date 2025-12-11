@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 # ========================================================
 # LOAD MODEL DATA
 # ========================================================
-uploaded_file = "Model_Results_Final.xlsx"
+uploaded_file = "data.xlsx"
 
 sheets = {
     "Catalyst dose": "Catalyst dose",
