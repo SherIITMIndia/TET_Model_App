@@ -1,7 +1,7 @@
+pip==23.3.1
 sstreamlit
 pandas
 numpy
 openpyxl
 matplotlib
 scikit-learn
-
