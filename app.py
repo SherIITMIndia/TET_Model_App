@@ -15,59 +15,27 @@ st.set_page_config(
     layout="wide"
 )
 
-# ========================================================
-# IIT MADRAS BACKGROUND (TRANSPARENT)
-# ========================================================
-@st.cache_data(show_spinner=False)
-def get_base64_image(path):
-    with open(path, "rb") as f:
-        return base64.b64encode(f.read()).decode()
-
-LOGO_PATH = os.path.join(os.getcwd(), "iitm_logo.png")
-
-if os.path.exists(LOGO_PATH):
-    encoded = get_base64_image(LOGO_PATH)
-    st.markdown(
-        f"""
-        <style>
-        html, body {{
-            height: 100%;
-            margin: 0;
-        }}
-
-        body {{
-            background-image: url("data:image/png;base64,{encoded}");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 35%;
-            background-attachment: fixed;
-        }}
-
-        .stApp {{
-            background: transparent;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-else:
-    st.warning("Background image not loaded (logo file missing).")
 
 # ========================================================
 # UNOFFICIAL WATERMARK (TOP-RIGHT)
 # ========================================================
 st.markdown(
     """
-    <div style="
+    <style>
+    .unofficial-badge {
         position: fixed;
-        bottom: 15px;
+        bottom: 16px;
         right: 20px;
         font-size: 13px;
         color: #b00000;
         font-weight: 600;
-        opacity: 0.75;
+        opacity: 0.8;
         z-index: 999999;
-        pointer-events: none;">
+        pointer-events: none;
+    }
+    </style>
+
+    <div class="unofficial-badge">
         ⚠️ Unofficial App
     </div>
     """,
