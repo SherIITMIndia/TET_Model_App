@@ -18,14 +18,15 @@ st.set_page_config(
 # ========================================================
 # IIT MADRAS BACKGROUND (TRANSPARENT)
 # ========================================================
-def set_background(image_file):
-    if not os.path.exists(image_file):
-        st.error("Background image not found")
-        return
+@st.cache_data(show_spinner=False)
+def get_base64_image(path):
+    with open(path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
 
-    with open(image_file, "rb") as f:
-        encoded = base64.b64encode(f.read()).decode()
+LOGO_PATH = os.path.join(os.getcwd(), "iitm_logo.png")
 
+if os.path.exists(LOGO_PATH):
+    encoded = get_base64_image(LOGO_PATH)
     st.markdown(
         f"""
         <style>
@@ -38,7 +39,7 @@ def set_background(image_file):
             background-image: url("data:image/png;base64,{encoded}");
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 40%;
+            background-size: 35%;
             background-attachment: fixed;
         }}
 
@@ -49,11 +50,8 @@ def set_background(image_file):
         """,
         unsafe_allow_html=True
     )
-
-LOGO_PATH = os.path.join(os.path.dirname(__file__), "iitm_logo.png")
-set_background(LOGO_PATH)
-
-
+else:
+    st.warning("Background image not loaded (logo file missing).")
 
 # ========================================================
 # UNOFFICIAL WATERMARK (TOP-RIGHT)
@@ -62,13 +60,14 @@ st.markdown(
     """
     <div style="
         position: fixed;
-        top: 12px;
-        right: 18px;
-        font-size: 14px;
+        bottom: 15px;
+        right: 20px;
+        font-size: 13px;
         color: #b00000;
-        font-weight: 700;
-        opacity: 0.85;
-        z-index: 999999;">
+        font-weight: 600;
+        opacity: 0.75;
+        z-index: 999999;
+        pointer-events: none;">
         ⚠️ Unofficial App
     </div>
     """,
