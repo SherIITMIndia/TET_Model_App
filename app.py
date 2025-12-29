@@ -21,21 +21,14 @@ st.set_page_config(
 # ========================================================
 st.markdown(
     """
-    <style>
-    .unofficial-badge {
-        position: fixed;
-        bottom: 16px;
-        right: 20px;
-        font-size: 13px;
+    <div style="
+        text-align: center;
+        margin-top: -10px;
+        margin-bottom: 20px;
+        font-size: 14px;
         color: #b00000;
         font-weight: 600;
-        opacity: 0.8;
-        z-index: 999999;
-        pointer-events: none;
-    }
-    </style>
-
-    <div class="unofficial-badge">
+        opacity: 0.8;">
         ⚠️ Unofficial App
     </div>
     """,
