@@ -50,7 +50,9 @@ def set_background(image_file):
         unsafe_allow_html=True
     )
 
-set_background("iitm_logo.png")
+LOGO_PATH = os.path.join(os.path.dirname(__file__), "iitm_logo.png")
+set_background(LOGO_PATH)
+
 
 
 # ========================================================
