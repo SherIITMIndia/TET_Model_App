@@ -18,7 +18,7 @@ st.set_page_config(
 # ========================================================
 # IIT MADRAS BACKGROUND (TRANSPARENT)
 # ========================================================
-ddef set_background(image_file):
+def set_background(image_file):
     if not os.path.exists(image_file):
         st.error("Background image not found")
         return
