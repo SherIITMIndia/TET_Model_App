@@ -18,19 +18,32 @@ st.set_page_config(
 # ========================================================
 # IIT MADRAS BACKGROUND (TRANSPARENT)
 # ========================================================
-def set_background(image_file):
+ddef set_background(image_file):
     if not os.path.exists(image_file):
+        st.error("Background image not found")
         return
+
     with open(image_file, "rb") as f:
         encoded = base64.b64encode(f.read()).decode()
 
     st.markdown(
         f"""
         <style>
-        .stApp {{
-            background: url("data:image/png;base64,{encoded}") 
-                        no-repeat center center fixed;
+        html, body {{
+            height: 100%;
+            margin: 0;
+        }}
+
+        body {{
+            background-image: url("data:image/png;base64,{encoded}");
+            background-repeat: no-repeat;
+            background-position: center;
             background-size: 40%;
+            background-attachment: fixed;
+        }}
+
+        .stApp {{
+            background: transparent;
         }}
         </style>
         """,
@@ -39,6 +52,7 @@ def set_background(image_file):
 
 set_background("iitm_logo.png")
 
+
 # ========================================================
 # UNOFFICIAL WATERMARK (TOP-RIGHT)
 # ========================================================
@@ -46,13 +60,13 @@ st.markdown(
     """
     <div style="
         position: fixed;
-        top: 15px;
-        right: 20px;
+        top: 12px;
+        right: 18px;
         font-size: 14px;
-        color: #aa0000;
-        font-weight: bold;
-        opacity: 0.7;
-        z-index: 9999;">
+        color: #b00000;
+        font-weight: 700;
+        opacity: 0.85;
+        z-index: 999999;">
         ⚠️ Unofficial App
     </div>
     """,
